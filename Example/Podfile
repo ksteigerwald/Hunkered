@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Hunkered_Example' do
+  pod 'Hunkered', :path => '../'
+
+  target 'Hunkered_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

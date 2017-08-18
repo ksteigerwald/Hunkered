@@ -1,0 +1,16 @@
+PODS:
+  - Hunkered (0.1.0)
+
+DEPENDENCIES:
+  - Hunkered (from `../`)
+
+EXTERNAL SOURCES:
+  Hunkered:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Hunkered: d6c8f484331e34b112ae6d422ec1c118944f8e26
+
+PODFILE CHECKSUM: 893ea265dd1aaa2d4d218de0292ae80cf2ab55c0
+
+COCOAPODS: 1.1.1

@@ -1,0 +1,6 @@
+framework module Hunkered {
+  umbrella header "Hunkered-umbrella.h"
+
+  export *
+  module * { export * }
+}

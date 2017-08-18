@@ -1,0 +1,22 @@
+{
+  "name": "Hunkered",
+  "version": "0.1.0",
+  "summary": "A short description of Hunkered.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Kris Steigerwald/Hunkered",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Kris Steigerwald": "kris.steigerwald@capitalone.com"
+  },
+  "source": {
+    "git": "https://github.com/Kris Steigerwald/Hunkered.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Hunkered/Classes/**/*"
+}

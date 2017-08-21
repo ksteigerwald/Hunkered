@@ -9,6 +9,7 @@
 import Foundation
 
 public enum HunkeredError : String, Error {
-    case TokenError = "Token Not Set"
-    case DirectoryNotSet = "Hunkered 'MockData' directory not set"
+    case TokenError = "Hunkered: Token Not Set"
+    case DirectoryNotSet = "Hunkered: 'MockData' directory not set"
+    case JSONReadError = "Hunkered: JSON serializtion failed"
 }

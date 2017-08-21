@@ -11,7 +11,7 @@ import Hunkered
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        let check = HunkeredIO().directoryExistsAtPath("/hunkered")
+        let check = HunkeredIO().loadJSON("")
         print("dir?:", check)
         
         super.viewDidLoad()

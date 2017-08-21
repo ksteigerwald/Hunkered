@@ -7,44 +7,49 @@
 //
 
 import Foundation
+fileprivate class BundleTargetingClass {}
+
 
 public struct HunkeredIO {
    
     public init() {}
+    private let jsonDir:String = "MockData"
     
-    public func directoryExistsAtPath(_ path: String) -> Bool {
-//        let fileManager = FileManager.default
-//        print(fileManager.currentDirectoryPath)
+    public func loadJSON(_ path: String) -> Bool {
         try? ls()
-        
-        var isDirectory = ObjCBool(true)
-        let exists = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
-        return exists && isDirectory.boolValue
+        return true
     }
    
     private func hasMockDataDirectory() -> Bool {
-        let dir = Bundle.main.url(forResource: "MockData", withExtension: nil)
+        let dir = Bundle.main.url(forResource: jsonDir, withExtension: nil)
         return dir != nil
+    }
+  
+   
+    func serialize(path: String) throws -> String {
+        let url = URL(fileURLWithPath: path)
+        do {
+            let data:Data = try Data(contentsOf: url)
+            let JSON = try JSONSerialization.jsonObject(with: data, options: [])
+            print(data, JSON)
+        }
+        catch {
+            print(HunkeredError.JSONReadError.rawValue)
+            throw HunkeredError.JSONReadError
+        }
+        return path
     }
     
     private func ls() throws {
         guard hasMockDataDirectory() else {
-            print("HUNKERED:", HunkeredError.DirectoryNotSet.rawValue)
+            print(HunkeredError.DirectoryNotSet.rawValue)
             throw HunkeredError.DirectoryNotSet
         }
-        let paths:[String] = Bundle.main.paths(forResourcesOfType: "json", inDirectory: "foo")
-        paths.forEach {path in
-            do {
-                let contents = try String(contentsOfFile: path) 
-                print(contents)
-            } catch {
-            }
-        }
         
-//        let filemanager:FileManager = FileManager()
-//        let files = filemanager.enumerator(atPath: NSHomeDirectory())
-//        while let file = files?.nextObject() {
-//            print(file)
-//        } 
+        let paths:[String] = Bundle.main.paths(forResourcesOfType: "json", inDirectory: jsonDir)
+        let foo = try paths.map(serialize)
+        
+        print(foo)
+        
     }
 }

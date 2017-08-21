@@ -46,41 +46,44 @@ public enum MockDirection: String {
 
 public struct Hunkered {
     
-    private static var mocks = [
-        "todos": [
-            "INDEX": "[{ \"userId\": 1, \"id\": 1, \"title\": \"delectus aut autem\", \"completed\": false }, { \"userId\": 1, \"id\": 2, \"title\": \"quis ut nam facilis et officia qui\", \"completed\": false }]",
-            "SHOW": "{ \"userId\": 1, \"id\": 1, \"title\": \"delectus aut autem\", \"completed\": false }"
-        ]
-    ]
-    
+    static let mocks:[[String: AnyObject]] = {
+        do {
+            return try HunkeredIO().loadJSON()
+        } catch {
+            print("problems...")
+            return []
+        }
+    }()
+   
     private static func index(_ resource: String, action: String) -> String? {
+        return "foo"
         
-        guard let book = mocks[resource] else {
-            print("FAILED TO FIND KEY")
-            return nil
-        }
-        
-        guard let action = book[action] else {
-            print("FAILED TO FIND RESOURCE ACTION, PLEASE INCLUDE MOCK")
-            return nil
-        }
-        
-        return action
+//        guard let book = mocks[resource] else {
+//            print("FAILED TO FIND KEY")
+//            return nil
+//        }
+//        
+//        guard let action = book[action] else {
+//            print("FAILED TO FIND RESOURCE ACTION, PLEASE INCLUDE MOCK")
+//            return nil
+//        }
+//        
+//        return action
     }
     
-    public static func find(_ request: URLRequest ) -> Data? {
-        
-        guard let parts = (request.url?.pathComponents),
-            let method = request.httpMethod,
-            let direction = MockDirection(rawValue: method)
-            else { return nil }
-        
-        let suffix = parts.suffix(2).map{ i in return i}
-        let actions = direction.kind(suffix)
-        
-        guard let loadJSON = index(actions[0], action: actions[1]) else { return nil }
-        
-        return loadJSON.data(using: String.Encoding.utf8)
-    }
+//    public func find(_ request: URLRequest ) -> Data? {
+//        
+//        guard let parts = (request.url?.pathComponents),
+//            let method = request.httpMethod,
+//            let direction = MockDirection(rawValue: method)
+//            else { return nil }
+//        
+//        let suffix = parts.suffix(2).map{ i in return i}
+//        let actions = direction.kind(suffix)
+//        
+//        guard let loadJSON = index(actions[0], action: actions[1]) else { return nil }
+//        
+//        return loadJSON.data(using: String.Encoding.utf8)
+//    }
     
 }

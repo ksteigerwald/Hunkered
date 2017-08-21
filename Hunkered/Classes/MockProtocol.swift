@@ -64,7 +64,8 @@ public class HunkeredURLProtocol: URLProtocol {
     // MARK: Loading Methods
     public override func startLoading() {
         
-        let data:NSData = Hunkered.find(request) as! NSData
+        //let data:NSData = Hunkered.find(request) as! NSData
+        let data:NSData = [:] as! NSData
         let client = self.client
         let response = HTTPURLResponse(url: (request.url)!,
                                        statusCode: 200,

@@ -8,6 +8,7 @@
 
 import Foundation
 
-enum HunkeredError : String, Error {
-    case TokenError = "Token Not Set" 
+public enum HunkeredError : String, Error {
+    case TokenError = "Token Not Set"
+    case DirectoryNotSet = "Hunkered 'MockData' directory not set"
 }

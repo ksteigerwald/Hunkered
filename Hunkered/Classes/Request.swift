@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-open class AccessTokenAdapter: RequestAdapter {
+open class HunkeredAccessTokenAdapter: RequestAdapter {
     private let accessToken: String
     
     init(accessToken: String) {
@@ -79,7 +79,7 @@ open class RequestManager {
                                           delegate: SessionDelegate(),
                                           serverTrustPolicyManager: polices)
         
-        self.liveManager.adapter = AccessTokenAdapter(accessToken: token)
+        self.liveManager.adapter = HunkeredAccessTokenAdapter(accessToken: token)
         self.mockManager = SessionManager(configuration: mockConfig)
        
         guard token.isEmpty else {

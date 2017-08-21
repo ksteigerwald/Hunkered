@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		BB9CE0607230C629C0AB2F3E /* Pods_Hunkered_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED94DFD74AD120F94BA45F1 /* Pods_Hunkered_Tests.framework */; };
+		EC4C29E61F4B39EA00D37C89 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = EC4C29E51F4B39EA00D37C89 /* test.json */; };
+		EC4C29EA1F4B41DF00D37C89 /* MockData in Resources */ = {isa = PBXBuildFile; fileRef = EC4C29E91F4B41DF00D37C89 /* MockData */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		9ED94DFD74AD120F94BA45F1 /* Pods_Hunkered_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hunkered_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C19F0B832EE40819F11292CB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E140880BC73F60984D7A408B /* Pods-Hunkered_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hunkered_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hunkered_Example/Pods-Hunkered_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		EC4C29E51F4B39EA00D37C89 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		EC4C29E91F4B41DF00D37C89 /* MockData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockData; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 		607FACD21AFB9204008FA782 /* Example for Hunkered */ = {
 			isa = PBXGroup;
 			children = (
+				EC4C29E91F4B41DF00D37C89 /* MockData */,
+				EC4C298C1F4B32F800D37C89 /* hunkered */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -156,6 +162,14 @@
 				9ED94DFD74AD120F94BA45F1 /* Pods_Hunkered_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC4C298C1F4B32F800D37C89 /* hunkered */ = {
+			isa = PBXGroup;
+			children = (
+				EC4C29E51F4B39EA00D37C89 /* test.json */,
+			);
+			path = hunkered;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				EC4C29E61F4B39EA00D37C89 /* test.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				EC4C29EA1F4B41DF00D37C89 /* MockData in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

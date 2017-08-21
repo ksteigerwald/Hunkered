@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+import Hunkered
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
+        let check = HunkeredIO().directoryExistsAtPath("/hunkered")
+        print("dir?:", check)
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -19,6 +22,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+   
+    
 
 }
 

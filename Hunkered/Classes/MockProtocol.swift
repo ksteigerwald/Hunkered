@@ -11,12 +11,7 @@ import Alamofire
 
 public class HunkeredURLProtocol: URLProtocol {
     
-    
-    public let mocks:Hunkered = Hunkered()
-    
-    
     public var cannedResponse: NSData?
-    
     public let cannedHeaders = ["Content-Type" : "application/json; charset=utf-8"]
     
     // MARK: Properties
@@ -25,10 +20,10 @@ public class HunkeredURLProtocol: URLProtocol {
     }
     
     lazy var session: URLSession = {
+        
         let configuration: URLSessionConfiguration = {
             let configuration = URLSessionConfiguration.ephemeral
             configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-            
             return configuration
         }()
         
@@ -67,17 +62,17 @@ public class HunkeredURLProtocol: URLProtocol {
     }
     
     // MARK: Loading Methods
-    
     public override func startLoading() {
         
-        let data:NSData = mocks.find(request) as! NSData
+        let data:NSData = Hunkered.find(request) as! NSData
         let client = self.client
         let response = HTTPURLResponse(url: (request.url)!,
                                        statusCode: 200,
                                        httpVersion: "HTTP/1.1",
                                        headerFields: cannedHeaders)
         
-        client?.urlProtocol(self, didReceive: response!, cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
+        client?.urlProtocol(self, didReceive: response!,
+                            cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
         
         cannedResponse = data
         
@@ -85,7 +80,6 @@ public class HunkeredURLProtocol: URLProtocol {
         client?.urlProtocolDidFinishLoading(self)
         
         activeTask?.resume()
-        
     }
     
     

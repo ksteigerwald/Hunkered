@@ -11,7 +11,13 @@ import Hunkered
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        HunkeredIO()
+        let url:URL = URL(string:"http://appi.foo.com/todos/1")!
+        var rq = URLRequest(url: url)
+        rq.httpMethod = "GET"
+        print(url)
+        let h:Hunkered = Hunkered()
+        let out = h.find(rq)
+        print("out:", out)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

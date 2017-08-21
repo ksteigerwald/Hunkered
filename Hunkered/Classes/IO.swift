@@ -14,11 +14,20 @@ public struct HunkeredIO {
     
     public init() {
         do {
-        print(try loadJSON())
+            let test = try loadJSON()
         } catch {}
     }
     
-    public func loadJSON() throws -> [[String: AnyObject]] {
+    public func data() -> [[String : AnyObject]] {
+        do {
+            return try loadJSON()
+        }
+        catch {
+            return []
+        }
+    }
+    
+    private func loadJSON() throws -> [[String: AnyObject]] {
         
         guard hasMockDataDirectory() else {
             print(HunkeredError.DirectoryNotSet.rawValue)

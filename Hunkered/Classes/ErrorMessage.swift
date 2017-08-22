@@ -13,3 +13,11 @@ public enum HunkeredError : String, Error {
     case DirectoryNotSet = "Hunkered: 'MockData' directory not set"
     case JSONReadError = "Hunkered: JSON serializtion failed"
 }
+
+struct Logger {
+    init(_ logs: Any...) {
+        print("*************************")
+        for log in logs { print(log) }
+        print("*************************")
+    }
+}

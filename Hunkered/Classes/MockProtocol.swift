@@ -64,21 +64,14 @@ public class HunkeredURLProtocol: URLProtocol {
     
     // MARK: Loading Methods
     public override func startLoading() {
-        let data:NSData = mocks.find(request) as! NSData
-        let client = self.client
-        let response = HTTPURLResponse(url: (request.url)!,
-                                       statusCode: 200,
-                                       httpVersion: "HTTP/1.1",
-                                       headerFields: cannedHeaders)
-        
-        client?.urlProtocol(self, didReceive: response!, cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
-        
-        cannedResponse = data
-        
-        client?.urlProtocol(self, didLoad: cannedResponse as! Data)
+       if let data = mocks.find(request),
+          let url = request.url,
+          let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: cannedHeaders) {
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
+            client?.urlProtocol(self, didLoad: data)
+        }
+       
         client?.urlProtocolDidFinishLoading(self)
-        
-        activeTask?.resume()
     }
     
     public override func stopLoading() {

@@ -57,7 +57,7 @@ public struct Hunkered {
   
     public init() {}
 
-    private func getNode(_ method: String) -> [String : AnyObject]? {
+    private func getNode(_ method: String) -> [String : AnyObject] {
         let list:[String : AnyObject] = mocks.filter{ item in
             let key:String = Array(item.keys).first!
             return method == key
@@ -65,17 +65,22 @@ public struct Hunkered {
         
         guard let data = list[method] else {
             print("NON: MATCHING")
-            return nil
+            return [:]
         }
         return data as! [String : AnyObject]
     }
     
-    private func getData(resource: String, action: String) -> Data? {
+    private func getData(resource: String, action: String) -> String {
         let data = getNode(resource)
-        guard let book = data?[action] else { return nil }
-        return NSKeyedArchiver.archivedData(withRootObject: book)
+        guard let book = data[action] else { return "" }
+        if let json = try? JSONSerialization.data( withJSONObject: book, options: []) {
+            let stringify:String = String(data: json, encoding: .ascii)!
+            return stringify
+        }
+        
+        return ""
     }
-    
+   
     public func find(_ request: URLRequest ) -> Data? {
         guard let parts = (request.url?.pathComponents),
              let method = request.httpMethod,
@@ -85,7 +90,9 @@ public struct Hunkered {
         let suffix = parts.suffix(2).map{ i in return i}
         let actions = direction.kind(suffix)
         
-        return getData(resource: actions.first!, action: actions.last!)
+        let data:String = getData(resource: actions.first!, action: actions.last!)
+        return data.data(using: String.Encoding.utf8)
+        //return data.data(using: String.Encoding.utf8)
     }
     
 }

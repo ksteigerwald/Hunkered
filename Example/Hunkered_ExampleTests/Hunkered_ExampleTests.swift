@@ -10,19 +10,9 @@ import XCTest
 import Hunkered
 import Alamofire
 
-enum Handler {
-    case live, mock
-    var session: SessionManager {
-        switch self {
-        case .mock: return HunkeredManager()
-        case .live: return HunkeredManager(configuration: URLSessionConfiguration.default,
-                                           delegate: SessionDelegate(),
-                                           serverTrustPolicyManager: ServerTrustPolicyManager(policies: [ "localhost:3000": .disableEvaluation]))
-        }
-    }
-}
-
 class Hunkered_ExampleTests: XCTestCase {
+    
+    var requestor:HunkeredRequestState = .live
     
     override func setUp() {
         super.setUp()
@@ -35,15 +25,24 @@ class Hunkered_ExampleTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let expect = expectation(description: "Get")
+        requestor = .mock
+        requestor.session.request("https://httpbin.org/todos").responseJSON { response in
+            print(response)
+            print("----------------------")
+            switch response.result {
+            case .success(let value):
+                let val = value as AnyObject?
+                print("Mock DATA", val as Any)
+            case .failure(let error):
+                print("Error: Handle failure", error)
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    
     
 }

@@ -58,27 +58,37 @@ struct HunkeredRequestConfig {
     }
 }
 
-let requestConfig = HunkeredRequestConfig()
-
-open class HunkeredManager:SessionManager {
+open class HunkeredRequestManager {
     
-    public override init( configuration: URLSessionConfiguration = requestConfig.mock,
-        delegate: SessionDelegate = SessionDelegate(),
-        serverTrustPolicyManager: ServerTrustPolicyManager? = nil) {
+    static let shared = HunkeredRequestManager()
     
-        super.init(configuration: configuration,
-        delegate: SessionDelegate(),
-        serverTrustPolicyManager: serverTrustPolicyManager)
+    fileprivate let liveManager: SessionManager
+    fileprivate let mockManager: SessionManager
+    
+    let configuration: URLSessionConfiguration = {
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [HunkeredURLProtocol.self]
+        return configuration
+    }()
+    
+    public init(_ state: HunkeredRequestState = .live) {
+        
+        self.liveManager = SessionManager.default
+        self.mockManager = SessionManager(configuration: configuration)
+        
     }
 }
 
-
-/*
-let requestor = RequestManager.shared
-*/
 public enum HunkeredRequestState {
-    case live(HunkeredManager)
-    case mock(HunkeredManager)
+    case live
+    case mock
+    
+    public var session: SessionManager {
+        switch self {
+        case .live: return HunkeredRequestManager.shared.liveManager
+        case .mock: return HunkeredRequestManager.shared.mockManager
+        }
+    }
 }
 
 

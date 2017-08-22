@@ -13,7 +13,7 @@ public class HunkeredURLProtocol: URLProtocol {
     
     public var cannedResponse: NSData?
     public let cannedHeaders = ["Content-Type" : "application/json; charset=utf-8"]
-    private let mocks: Hunkered = Hunkered()
+    private let mocks: HunkeredMock = HunkeredMock()
     
     // MARK: Properties
     struct PropertyKeys {
@@ -66,7 +66,10 @@ public class HunkeredURLProtocol: URLProtocol {
     public override func startLoading() {
        if let data = mocks.find(request),
           let url = request.url,
-          let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: cannedHeaders) {
+          let response = HTTPURLResponse(url: url,
+                                  statusCode: 200,
+                                 httpVersion: "HTTP/1.1",
+                                headerFields: cannedHeaders) {
             client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
             client?.urlProtocol(self, didLoad: data)
         }

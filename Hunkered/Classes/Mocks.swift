@@ -44,7 +44,7 @@ public enum MockDirection: String {
     
 }
 
-public struct Hunkered {
+public struct HunkeredMock {
     
     public let mocks:[[String: AnyObject]] = {
         do {

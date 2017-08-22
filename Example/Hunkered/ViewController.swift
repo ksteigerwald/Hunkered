@@ -15,9 +15,6 @@ class ViewController: UIViewController {
         var rq = URLRequest(url: url)
         rq.httpMethod = "GET"
         print(url)
-        let h:Hunkered = Hunkered()
-        let out = h.find(rq)
-        print("out:", out)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

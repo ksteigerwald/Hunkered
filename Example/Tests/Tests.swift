@@ -15,6 +15,7 @@ enum Handler {
     }
 }
 
+@testable import Hunkered
 class Tests: XCTestCase {
     
     var requestor: Handler = .live

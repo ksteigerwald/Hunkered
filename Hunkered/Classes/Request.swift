@@ -41,7 +41,6 @@ struct HunkeredRequestConfig {
     var mock: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [HunkeredURLProtocol.self]
-        configuration.httpAdditionalHeaders = ["session-configuration-header": "foo"]
         return configuration
     }
     

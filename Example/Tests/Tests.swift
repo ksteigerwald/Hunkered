@@ -1,8 +1,23 @@
 import UIKit
 import XCTest
 import Hunkered
+import Alamofire
+
+enum Handler {
+    case live, mock
+    var session: SessionManager {
+        
+        switch self {
+        case .mock: return HunkeredManager()
+        case .live: return HunkeredManager(configuration: URLSessionConfiguration.default, delegate: SessionDelegate(), serverTrustPolicyManager: ServerTrustPolicyManager(policies: [ "localhost:3000": .disableEvaluation]))
+        }
+        
+    }
+}
 
 class Tests: XCTestCase {
+    
+    var requestor: Handler = .live
     
     override func setUp() {
         super.setUp()
@@ -15,6 +30,8 @@ class Tests: XCTestCase {
     }
     
     func testExample() {
+        print("-----")
+        
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
     }

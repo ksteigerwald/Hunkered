@@ -61,51 +61,25 @@ struct HunkeredRequestConfig {
 
 let requestConfig = HunkeredRequestConfig()
 
-open class RequestManager {
+open class HunkeredManager:SessionManager {
     
-    public let token:String
-    public let liveManager:SessionManager
-    public let mockManager:SessionManager
+    public override init( configuration: URLSessionConfiguration = requestConfig.mock,
+        delegate: SessionDelegate = SessionDelegate(),
+        serverTrustPolicyManager: ServerTrustPolicyManager? = nil) {
     
-    init(_ mockConfig: URLSessionConfiguration = requestConfig.mock,
-         _ liveConfig: URLSessionConfiguration = requestConfig.live,
-         _ polices: [String: ServerTrustPolicy] = requestConfig.trustPolices,
-         token: String) {
-        
-        self.token = token
-        
-        let polices = ServerTrustPolicyManager(policies: polices)
-        self.liveManager = SessionManager(configuration: liveConfig,
-                                          delegate: SessionDelegate(),
-                                          serverTrustPolicyManager: polices)
-        
-        self.liveManager.adapter = HunkeredAccessTokenAdapter(accessToken: token)
-        self.mockManager = SessionManager(configuration: mockConfig)
-       
-        guard token.isEmpty else {
-            print("HUNKERED: Token is empty")
-            return
-        }
+        super.init(configuration: configuration,
+        delegate: SessionDelegate(),
+        serverTrustPolicyManager: serverTrustPolicyManager)
     }
-    
 }
 
 
 /*
 let requestor = RequestManager.shared
-
-enum RequestState {
-    case Live
-    case Mock
-    
-    var session:SessionManager {
-        switch self {
-        case .Live: return requestor.liveManager!
-        case .Mock: return requestor.mockManager!
-        }
-    }
-    
-}
 */
+public enum HunkeredRequestState {
+    case live(HunkeredManager)
+    case mock(HunkeredManager)
+}
 
 

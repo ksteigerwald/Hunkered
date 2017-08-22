@@ -56,23 +56,6 @@ public struct Hunkered {
     }()
   
     public init() {}
-    private static func index(_ resource: String, action: String) -> String? {
-        
-        return "foo"
-        
-//        guard let book = mocks[resource] else {
-//            print("FAILED TO FIND KEY")
-//            return nil
-//        }
-//        
-//        guard let action = book[action] else {
-//            print("FAILED TO FIND RESOURCE ACTION, PLEASE INCLUDE MOCK")
-//            return nil
-//        }
-//        
-//        return action
-    }
-   
 
     private func getNode(_ method: String) -> [String : AnyObject] {
         return mocks.filter{ item in
@@ -87,7 +70,6 @@ public struct Hunkered {
         return NSKeyedArchiver.archivedData(withRootObject: book)
     }
     
-//    public func find(_ request: URLRequest ) -> Data? {
     public func find(_ request: URLRequest ) -> Data? {
         guard let parts = (request.url?.pathComponents),
              let method = request.httpMethod,
@@ -98,10 +80,6 @@ public struct Hunkered {
         let actions = direction.kind(suffix)
         
         return getData(resource: actions.first!, action: actions.last!)
-//
-//        guard let loadJSON = index(actions[0], action: actions[1]) else { return nil }
-//        
-//        return loadJSON.data(using: String.Encoding.utf8)
     }
     
 }

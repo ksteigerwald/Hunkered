@@ -13,7 +13,7 @@ public class HunkeredURLProtocol: URLProtocol {
     
     public var cannedResponse: NSData?
     public let cannedHeaders = ["Content-Type" : "application/json; charset=utf-8"]
-    private let mocks: HunkeredIO = HunkeredIO()
+    private let mocks: Hunkered = Hunkered()
     
     // MARK: Properties
     struct PropertyKeys {
@@ -64,19 +64,16 @@ public class HunkeredURLProtocol: URLProtocol {
     
     // MARK: Loading Methods
     public override func startLoading() {
-        let data = mocks.data()
-        //Hunkered.find(request) as! NSData
-        //let data:NSData = [:] as! NSData
+        let data:NSData = mocks.find(request) as! NSData
         let client = self.client
         let response = HTTPURLResponse(url: (request.url)!,
                                        statusCode: 200,
                                        httpVersion: "HTTP/1.1",
                                        headerFields: cannedHeaders)
         
-        client?.urlProtocol(self, didReceive: response!,
-                            cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
+        client?.urlProtocol(self, didReceive: response!, cacheStoragePolicy: URLCache.StoragePolicy.notAllowed)
         
-        cannedResponse = data as! NSData
+        cannedResponse = data
         
         client?.urlProtocol(self, didLoad: cannedResponse as! Data)
         client?.urlProtocolDidFinishLoading(self)

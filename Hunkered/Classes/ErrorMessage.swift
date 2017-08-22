@@ -2,7 +2,7 @@
 //  ErrorMessage.swift
 //  Pods
 //
-//  Created by Steigerwald, Kris S. (CONT) on 8/18/17.
+//  Created by Steigerwald, Kris S. on 8/18/17.
 //
 //
 

@@ -2,7 +2,7 @@
 //  IO.swift
 //  Pods
 //
-//  Created by Steigerwald, Kris S. (CONT) on 8/21/17.
+//  Created by Steigerwald, Kris S. on 8/21/17.
 //
 //
 

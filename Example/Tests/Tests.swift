@@ -4,15 +4,6 @@ import Hunkered
 import Alamofire
 @testable import Hunkered
 
-enum Handler {
-    case live, mock
-    var session: SessionManager {
-        switch self {
-        case .mock: return HunkeredManager()
-        case .live: return HunkeredManager(configuration: URLSessionConfiguration.default, delegate: SessionDelegate(), serverTrustPolicyManager: ServerTrustPolicyManager(policies: [ "localhost:3000": .disableEvaluation]))
-        }
-    }
-}
 
 class Tests: XCTestCase {
     

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of Hunkered.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Kris Steigerwald/Hunkered",
+  "homepage": "https://github.kdc.capitalone.com/lot131/Hunkered",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Kris Steigerwald": "kris.steigerwald@capitalone.com"
   },
   "source": {
-    "git": "https://github.com/Kris Steigerwald/Hunkered.git",
+    "git": "https://github.kdc.capitalone.com/lot131/Hunkered.git",
     "tag": "0.1.0"
   },
   "platforms": {

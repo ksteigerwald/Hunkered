@@ -52,6 +52,16 @@
                ReferencedContainer = "container:Hunkered.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EC60A4C61F4C9271001E6DC8"
+               BuildableName = "Hunkered_ExampleTests.xctest"
+               BlueprintName = "Hunkered_ExampleTests"
+               ReferencedContainer = "container:Hunkered.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

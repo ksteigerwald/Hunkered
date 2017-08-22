@@ -4,9 +4,8 @@ use_frameworks!
 target 'Hunkered_Example' do
   pod 'Hunkered', :path => '../'
 
-  target 'Hunkered_Tests' do
+  target 'Hunkered_ExampleTests' do
     inherit! :search_paths
-
     
   end
 end

@@ -57,16 +57,22 @@ public struct Hunkered {
   
     public init() {}
 
-    private func getNode(_ method: String) -> [String : AnyObject] {
-        return mocks.filter{ item in
+    private func getNode(_ method: String) -> [String : AnyObject]? {
+        let list:[String : AnyObject] = mocks.filter{ item in
             let key:String = Array(item.keys).first!
             return method == key
-        }[0][method] as! [String : AnyObject]
+        }.first!
+        
+        guard let data = list[method] else {
+            print("NON: MATCHING")
+            return nil
+        }
+        return data as! [String : AnyObject]
     }
     
     private func getData(resource: String, action: String) -> Data? {
         let data = getNode(resource)
-        guard let book = data[action] else { return nil }
+        guard let book = data?[action] else { return nil }
         return NSKeyedArchiver.archivedData(withRootObject: book)
     }
     

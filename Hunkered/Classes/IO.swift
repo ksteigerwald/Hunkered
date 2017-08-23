@@ -33,7 +33,6 @@ public struct HunkeredIO {
             print(HunkeredError.DirectoryNotSet.rawValue)
             throw HunkeredError.DirectoryNotSet
         }
-        
         let paths:[String] = Bundle.main.paths(forResourcesOfType: "json", inDirectory: jsonDir)
         
         do {
@@ -59,7 +58,7 @@ public struct HunkeredIO {
             return [key : JSON as AnyObject]
         }
         catch {
-            print(HunkeredError.JSONReadError.rawValue)
+            print("++", HunkeredError.JSONReadError.rawValue)
             throw HunkeredError.JSONReadError
         }
     }

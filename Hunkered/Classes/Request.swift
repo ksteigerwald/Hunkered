@@ -51,12 +51,6 @@ struct HunkeredRequestConfig {
         configuration.timeoutIntervalForResource = 8
         return configuration
     }
-    
-    var trustPolices: [String: ServerTrustPolicy] {
-        return [
-            "api-it.cloud.capitalone.com": .disableEvaluation,
-            "localhost:3000": .disableEvaluation]
-    }
 }
 
 public enum HunkeredRequestState {

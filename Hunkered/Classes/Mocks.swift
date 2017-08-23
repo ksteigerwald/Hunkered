@@ -50,7 +50,7 @@ public struct HunkeredMock {
         do {
             return try HunkeredIO().data()
         } catch {
-            print("problems...")
+            Logger("problems...")
             return []
         }
     }()
@@ -58,6 +58,8 @@ public struct HunkeredMock {
     public init() {}
 
     private func getNode(_ method: String) -> [String : AnyObject] {
+        Logger(method, mocks)
+        
         let list:[String : AnyObject] = mocks.filter{ item in
             let key:String = Array(item.keys).first!
             return method == key

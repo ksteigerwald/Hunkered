@@ -73,6 +73,22 @@ class Hunkered_ExampleTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
+    func testIndex() {
+        let expect = expectation(description: "Get")
+        requestor?.setState(state: .mock)
+        requestor?.manager.request("https://httpbin.org/cafes").responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let val = value as AnyObject?
+                print("Mock DATA", val as Any)
+            case .failure(let error):
+                print("Error: Handle failure", error)
+            }
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
     
     
 }

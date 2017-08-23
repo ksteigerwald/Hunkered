@@ -16,9 +16,9 @@ public enum HunkeredError : String, Error {
 
 struct Logger {
     init(_ logs: Any...) {
-        print("*************************")
+        print("************HUNKERED*************")
         for log in logs { print(log) }
-        print("*************************")
+        print("************HUNKERED*************")
     }
 }
 

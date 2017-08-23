@@ -11,17 +11,11 @@ import Hunkered
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        let url:URL = URL(string:"http://appi.foo.com/todos/1")!
-        var rq = URLRequest(url: url)
-        rq.httpMethod = "GET"
-        print(url)
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
    
     

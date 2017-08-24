@@ -10,7 +10,7 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
-
+![Image of Hunkered](https://github.kdc.capitalone.com/lot131/Hunkered/HunkeredExample.gif)
 ## Installation
 
 Hunkered is available through [CocoaPods](http://cocoapods.org). To install

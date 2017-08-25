@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Hunkered'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Hunkered.'
+  s.summary          = 'Hunkered is a mocking library for Alamofire. Enables easy movement between live and mock request states.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,17 +18,17 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    Hunkered lets you hunker down Alamofire for easy mocking and REST api matching. Load JSON mocks directly from 'MockData' folder and match them to your request URL path. This is still in beta/active development. 
                        DESC
 
-  s.homepage         = 'https://github.kdc.capitalone.com/lot131/Hunkered'
+  s.homepage         = 'https://github.com/ksteigerwald/Hunkered'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Kris Steigerwald' => 'kris.steigerwald@capitalone.com' }
-  s.source           = { :git => 'https://github.kdc.capitalone.com/lot131/Hunkered.git', :tag => s.version.to_s }
+  s.author           = { 'Kris Steigerwald' => 'kris.steigerwald@gmail.com' }
+  s.source           = { :git => 'git@github.com:ksteigerwald/Hunkered.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'Hunkered/Classes/**/*'
   

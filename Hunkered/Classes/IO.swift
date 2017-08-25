@@ -12,11 +12,7 @@ public struct HunkeredIO {
    
     private let jsonDir:String = "MockData"
     
-    public init() {
-        do {
-            let test = try loadJSON()
-        } catch {}
-    }
+    public init() {}
     
     public func data() -> [[String : AnyObject]] {
         do {
@@ -58,7 +54,7 @@ public struct HunkeredIO {
             return [key : JSON as AnyObject]
         }
         catch {
-            print("++", HunkeredError.JSONReadError.rawValue)
+            print(HunkeredError.JSONReadError.rawValue)
             throw HunkeredError.JSONReadError
         }
     }

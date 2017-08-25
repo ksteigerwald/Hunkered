@@ -14,11 +14,4 @@ public enum HunkeredError : String, Error {
     case JSONReadError = "Hunkered: JSON serializtion failed"
 }
 
-struct Logger {
-    init(_ logs: Any...) {
-        print("************HUNKERED*************")
-        for log in logs { print(log) }
-        print("************HUNKERED*************")
-    }
-}
 

@@ -36,7 +36,7 @@ $ pod install
 ```
 ## Usage
 ### Stage 'MockData' folder
-![Image of Hunkered](https://github.kdc.capitalone.com/lot131/Hunkered/blob/master/HunkeredExample.gif)
+![Image of Hunkered](https://github.com/ksteigerwald/Hunkered/blob/master/HunkeredExample.gif)
 *Required
 
 ### Making a Request
